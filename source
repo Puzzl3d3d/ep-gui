@@ -142,26 +142,26 @@ function C_G()
 	local e_button = Instance.new("TextButton", scroll_frame)
 	
 	do
-		frame.BackgroundColor3 = Color3.fromRGB(58,58,58)
-		frame.BorderSizePixel = 5
-		frame.Position = UDim2.new(0,1084,0,16)
-		frame.Size = UDim2.new(0,270,0,205)
+		frame.BackgroundColor3 = Color3.fromRGB(40,40,40)
+		frame.BorderSizePixel = 0
+		frame.Position = UDim2.new(0.794, 0,0.021, 0)
+		frame.Size = UDim2.new(0.198, 0,0.267, 0)
 
-		scroll_frame.BackgroundTransparency = 0.9
-		scroll_frame.Position = UDim2.new(0,0,0.195,0)
+		scroll_frame.BackgroundTransparency = 0.95
+		scroll_frame.Position = UDim2.new(0,0,0.154,0)
 		scroll_frame.Size = UDim2.new(1, 0, 0.8, 0)
-		scroll_frame.CanvasSize = UDim2.new(0,0,1.2,0)
+		scroll_frame.CanvasSize = UDim2.new(1,0,0.841,0)
 
 		label.Text = "Entry Point GUI"
 		label.TextColor3 = Color3.new(1,1,1)
 		label.TextScaled = true
-		label.BackgroundColor3 = Color3.fromRGB(86,86,86)
+		label.BackgroundColor3 = 0.95
 		label.BorderSizePixel = 0
 		label.Position = UDim2.new(0,0,0,0)
-		label.Size = UDim2.new(1,0,0.2,0)
+		label.Size = UDim2.new(1,0,0.124,0)
 
 		i_label.Text = "Interact Speed"
-		i_label.BackgroundTransparency = 0.9
+		i_label.BackgroundTransparency = 0.95
 		i_label.TextColor3 = Color3.new(1,1,1)
 		i_label.TextScaled = true
 		i_label.BackgroundColor3 = Color3.fromRGB(86,86,86)
@@ -171,16 +171,17 @@ function C_G()
 
 		i_button.Text = "Submit"
 		i_button.TextColor3 = Color3.new(1,1,1)
-		i_button.BackgroundTransparency = 0.9
+		i_button.BackgroundTransparency = 0.95
 		i_button.TextScaled = true
 		i_button.BackgroundColor3 = Color3.fromRGB(86,86,86)
 		i_button.BorderSizePixel = 0
 		i_button.Position = UDim2.new(0.737, 0,0.198, 0)
 		i_button.Size = UDim2.new(0, 62, 0, 50)
 
-		i_box.Text = "Submit"
+		i_box.PlaceholderText = "Enter interaction time (seconds)"
+		i_box.PlaceholderColor3 = Color3.fromRGB(111,111,111)
 		i_box.TextColor3 = Color3.new(1,1,1)
-		i_box.BackgroundTransparency = 0.9
+		i_box.BackgroundTransparency = 0.95
 		i_box.TextScaled = true
 		i_box.BackgroundColor3 = Color3.fromRGB(86,86,86)
 		i_box.BorderSizePixel = 0
@@ -189,7 +190,7 @@ function C_G()
 		
 		e_button.Text = "Toggle ESP"
 		e_button.TextColor3 = Color3.new(1,1,1)
-		e_button.BackgroundTransparency = 0.9
+		e_button.BackgroundTransparency = 0.95
 		e_button.TextScaled = true
 		e_button.BackgroundColor3 = Color3.fromRGB(86,86,86)
 		e_button.BorderSizePixel = 0
