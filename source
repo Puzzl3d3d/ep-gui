@@ -1,0 +1,208 @@
+local P = game.Players.LocalPlayer
+local M = P:GetMouse()
+local C = P.Character or P.CharacterAdded:Wait()
+local CGUI = game:GetService("CoreGui")
+local E = false
+
+function d(f)
+	local dr = false
+	f.InputBegan:Connect(function(i)
+		if table.find({Enum.UserInputType.MouseButton1, Enum.UserInputType.Touch},i.UserInputType) then
+			dr = true
+			local smp = Vector2.new(M.X, M.Y)
+			local sfp = f.Position
+			repeat
+				task.wait()
+				local p = Vector2.new(M.X, M.Y)
+				local d = smp-p
+				d = Vector2.new(-d.X, -d.Y)
+				
+				f.Position = UDim2.new(0, sfp.X.Offset+d.X, 0, sfp.Y.Offset+d.Y)
+			until not dr
+		end
+	end)
+	f.InputEnded:Connect(function(i)
+		if table.find({Enum.UserInputType.MouseButton1, Enum.UserInputType.Touch},i.UserInputType) then
+			dr = false
+			
+		end
+	end)
+end
+function _i(t)
+	while task.wait(2) do
+		for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
+			if v.Name == "Time" or v.Name == "PickupTime" and (v:IsA("IntValue") or v:IsA("NumberValue")) then
+				v.Value = t
+			end
+			if v.Name == "ReqHacker" or v.Name == "ReqEngineer" then
+				v:Destroy()
+			end
+		end
+	end
+end
+function _e()
+	E = not E
+	--loadstring(game:HttpGet('https://raw.githubusercontent.com/Puzzl3d3d/entry-point-esp/main/source'))()
+	if E then
+		for _,plr in pairs(game.Players:GetPlayers()) do
+			task.defer(function()
+				local char = plr.Character or plr.CharacterAdded:Wait()
+				local highlight = Instance.new("Highlight")
+				highlight.Parent = char
+				highlight.FillColor = Color3.fromRGB(0,255,0) 
+			end)	
+		end
+	else
+		for _,plr in pairs(game.Players:GetPlayers()) do
+			task.defer(function()
+				local char = plr.Character or plr.CharacterAdded:Wait()
+				local highlight = char:FindFirstChild("Highlight")
+				if highlight then highlight:Destroy() end
+			end)	
+		end
+	end
+	game.Players.PlayerAdded:Connect(function(plr)
+		if not E then return end
+		task.defer(function()
+			local char = plr.Character or plr.CharacterAdded:Wait()
+			local highlight = Instance.new("Highlight")
+			highlight.Parent = char
+			highlight.FillColor = Color3.fromRGB(0,255,0) 
+		end)
+	end)
+	
+	if E then
+		for _,npc in pairs(workspace.Level.Actors:GetDescendants()) do
+			if npc:FindFirstChildOfClass("Humanoid") then
+				if npc:FindFirstChildOfClass("Highlight") then return end
+				local highlight = Instance.new("Highlight")
+				highlight.Parent = npc
+				if npc:FindFirstChild("Interact") then
+					if npc.Interact.ObjectName.Value == "Civilian" then 
+						highlight.FillColor = Color3.fromRGB(255,255,255) 
+					end
+					if npc.Interact.ObjectName.Value == "Ryan" or npc.Interact.ObjectName.Value == "Manager" or npc.Interact.ObjectName.Value == "SC Commander" or npc.Interact.ObjectName.Value == "Rose" or npc.Interact.ObjectName.Value == "Rivera" or npc.Interact.ObjectName.Value == "Falcon" or npc.Interact.ObjectName.Value == "Agent Nightshade" or npc.Interact.ObjectName.Value == "Agent Hemlock" then 
+						highlight.FillColor = Color3.fromRGB(0,0,255) 
+					end
+				end
+			end
+		end
+	else
+		for _,npc in pairs(workspace.Level.Actors:GetDescendants()) do
+			if npc:FindFirstChildOfClass("Humanoid") then
+				if npc:FindFirstChildOfClass("Highlight") then return end
+				local highlight = npc:FindFirstChild("Highlight")
+				if highlight then highlight:Destroy() end
+			end
+		end
+	end
+	if E then
+		for _,obj in pairs(workspace.Level.GroundItems:GetDescendants()) do
+			if obj:FindFirstChildOfClass("Highlight") then return end
+			local highlight = Instance.new("Highlight")
+			highlight.Parent = obj
+		end
+	else
+		for _,obj in pairs(workspace.Level.GroundItems:GetDescendants()) do
+			if obj:FindFirstChildOfClass("Highlight") then obj:FindFirstChildOfClass("Highlight"):Destroy() end
+		end
+	end
+	workspace.Level.Actors.ChildAdded:Connect(function(npc)
+		if not E then return end
+		npc = npc.Character
+		if npc:FindFirstChildOfClass("Humanoid") then
+			if npc:FindFirstChildOfClass("Highlight") then return end
+			local highlight = Instance.new("Highlight")
+			highlight.Parent = npc
+			if npc:FindFirstChild("Interact") then
+				if npc.Interact.ObjectName.Value == "Civilian" then 
+					highlight.FillColor = Color3.fromRGB(255,255,255) 
+				end
+				if npc.Interact.ObjectName.Value == "Ryan" or npc.Interact.ObjectName.Value == "Manager" or npc.Interact.ObjectName.Value == "SC Commander" or npc.Interact.ObjectName.Value == "Rose" or npc.Interact.ObjectName.Value == "Rivera" or npc.Interact.ObjectName.Value == "Falcon" or npc.Interact.ObjectName.Value == "Agent Nightshade" or npc.Interact.ObjectName.Value == "Agent Hemlock" then 
+					highlight.FillColor = Color3.fromRGB(0,0,255) 
+				end
+			end
+		end
+	end)
+	workspace.Level.GroundItems.ChildAdded:Connect(function(obj)
+		if not E then return end
+		local highlight = Instance.new("Highlight")
+		highlight.Parent = obj
+	end)
+end
+function C_G()
+	local screengui = Instance.new("ScreenGui", CGUI)
+	local frame = Instance.new("Frame", screengui)
+	d(frame)
+	local scroll_frame = Instance.new("ScrollingFrame", frame)
+	local label = Instance.new("TextLabel", frame)
+	local i_label = Instance.new("TextLabel", scroll_frame)
+	local i_button = Instance.new("TextButton", scroll_frame)
+	local i_box = Instance.new("TextBox", scroll_frame)
+	local e_button = Instance.new("TextButton", scroll_frame)
+	
+	do
+		frame.BackgroundColor3 = Color3.fromRGB(58,58,58)
+		frame.BorderSizePixel = 5
+		frame.Position = UDim2.new(0,1084,0,16)
+		frame.Size = UDim2.new(0,270,0,205)
+
+		scroll_frame.BackgroundTransparency = 0.9
+		scroll_frame.Position = UDim2.new(0,0,0.195,0)
+		scroll_frame.Size = UDim2.new(1, 0, 0.8, 0)
+		scroll_frame.CanvasSize = UDim2.new(0,0,1.2,0)
+
+		label.Text = "Entry Point GUI"
+		label.TextColor3 = Color3.new(1,1,1)
+		label.TextScaled = true
+		label.BackgroundColor3 = Color3.fromRGB(86,86,86)
+		label.BorderSizePixel = 0
+		label.Position = UDim2.new(0,0,0,0)
+		label.Size = UDim2.new(1,0,0.2,0)
+
+		i_label.Text = "Interact Speed"
+		i_label.BackgroundTransparency = 0.9
+		i_label.TextColor3 = Color3.new(1,1,1)
+		i_label.TextScaled = true
+		i_label.BackgroundColor3 = Color3.fromRGB(86,86,86)
+		i_label.BorderSizePixel = 0
+		i_label.Position = UDim2.new(0.033,0,0.024,0)
+		i_label.Size = UDim2.new(0,252,0,35)
+
+		i_button.Text = "Submit"
+		i_button.TextColor3 = Color3.new(1,1,1)
+		i_button.BackgroundTransparency = 0.9
+		i_button.TextScaled = true
+		i_button.BackgroundColor3 = Color3.fromRGB(86,86,86)
+		i_button.BorderSizePixel = 0
+		i_button.Position = UDim2.new(0.737, 0,0.198, 0)
+		i_button.Size = UDim2.new(0, 62, 0, 50)
+
+		i_box.Text = "Submit"
+		i_box.TextColor3 = Color3.new(1,1,1)
+		i_box.BackgroundTransparency = 0.9
+		i_box.TextScaled = true
+		i_box.BackgroundColor3 = Color3.fromRGB(86,86,86)
+		i_box.BorderSizePixel = 0
+		i_box.Position = UDim2.new(0.033, 0,0.202, 0)
+		i_box.Size = UDim2.new(0, 179,0, 50)
+		
+		e_button.Text = "Toggle ESP"
+		e_button.TextColor3 = Color3.new(1,1,1)
+		e_button.BackgroundTransparency = 0.9
+		e_button.TextScaled = true
+		e_button.BackgroundColor3 = Color3.fromRGB(86,86,86)
+		e_button.BorderSizePixel = 0
+		e_button.Position = UDim2.new(0.033, 0,0.444, 0)
+		e_button.Size = UDim2.new(0, 252,0, 50)
+	end
+	
+	i_button.MouseButton1Click:Connect(function()
+		_i(i_box.Text)
+	end)
+	e_button.MouseButton1Click:Connect(_e)
+end
+
+if game.CreatorId == 287823010 then
+	C_G()
+end
