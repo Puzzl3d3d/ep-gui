@@ -155,7 +155,7 @@ function C_G()
 		label.Text = "Entry Point GUI"
 		label.TextColor3 = Color3.new(1,1,1)
 		label.TextScaled = true
-		label.BackgroundColor3 = 0.95
+		label.BackgroundTransparency = 0.95
 		label.BorderSizePixel = 0
 		label.Position = UDim2.new(0,0,0,0)
 		label.Size = UDim2.new(1,0,0.124,0)
