@@ -145,7 +145,6 @@ function CreateGUI()
 
 	local EPGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
-	EnableDrag(Frame)
 	local TextLabel = Instance.new("TextLabel")
 	local ScrollingFrame = Instance.new("ScrollingFrame")
 	local esp = Instance.new("TextButton")
@@ -194,6 +193,7 @@ function CreateGUI()
 	ScrollingFrame.BackgroundTransparency = 0.950
 	ScrollingFrame.Position = UDim2.new(0, 0, 0.158652246, 0)
 	ScrollingFrame.Size = UDim2.new(0, 180, 0.841000021, 0)
+	ScrollingFrame.CanvasPosition = Vector2.new(0, 231.600677)
 	ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 	esp.Name = "esp"
@@ -202,7 +202,7 @@ function CreateGUI()
 	esp.BackgroundTransparency = 0.950
 	esp.LayoutOrder = 4
 	esp.Position = UDim2.new(0.0330796987, 0, 0.186608076, 0)
-	esp.Size = UDim2.new(0, 152, 0, 37)
+	esp.Size = UDim2.new(0.899999976, 0, 0, 37)
 	esp.Font = Enum.Font.SourceSans
 	esp.Text = "Toggle ESP"
 	esp.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -216,7 +216,7 @@ function CreateGUI()
 	sustriggers.BackgroundTransparency = 0.950
 	sustriggers.LayoutOrder = 3
 	sustriggers.Position = UDim2.new(0.0527777784, 0, 0.45914036, 0)
-	sustriggers.Size = UDim2.new(0, 152, 0, 37)
+	sustriggers.Size = UDim2.new(0.899999976, 0, 0, 37)
 	sustriggers.Font = Enum.Font.SourceSans
 	sustriggers.Text = "Remove Suspicious Triggers"
 	sustriggers.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -236,7 +236,7 @@ function CreateGUI()
 	Interaction.BorderSizePixel = 0
 	Interaction.LayoutOrder = 1
 	Interaction.Position = UDim2.new(0.0333333351, 0, 4.42344579e-08, 0)
-	Interaction.Size = UDim2.new(0, 180, 0, 60)
+	Interaction.Size = UDim2.new(0.899999976, 0, 0, 60)
 
 	submit.Name = "submit"
 	submit.Parent = Interaction
@@ -273,7 +273,7 @@ function CreateGUI()
 	Classes.BorderSizePixel = 0
 	Classes.LayoutOrder = 2
 	Classes.Position = UDim2.new(0, 0, 0.637215436, 0)
-	Classes.Size = UDim2.new(0, 166, 0, 162)
+	Classes.Size = UDim2.new(0.899999976, 0, 0, 162)
 
 	it.Name = "it"
 	it.Parent = Classes
@@ -342,7 +342,7 @@ function CreateGUI()
 	hiddenui.BackgroundTransparency = 0.950
 	hiddenui.LayoutOrder = 5
 	hiddenui.Position = UDim2.new(0.0330796987, 0, 0.186608076, 0)
-	hiddenui.Size = UDim2.new(0, 152, 0, 37)
+	hiddenui.Size = UDim2.new(0.899999976, 0, 0, 37)
 	hiddenui.Font = Enum.Font.SourceSans
 	hiddenui.Text = "Bypass Hidden UI"
 	hiddenui.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -350,13 +350,13 @@ function CreateGUI()
 	hiddenui.TextSize = 14.000
 	hiddenui.TextWrapped = true
 
-	unbreakdoors.Name = "hiddenui"
+	unbreakdoors.Name = "unbreakdoors"
 	unbreakdoors.Parent = ScrollingFrame
 	unbreakdoors.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	unbreakdoors.BackgroundTransparency = 0.950
 	unbreakdoors.LayoutOrder = 6
 	unbreakdoors.Position = UDim2.new(0.0330796987, 0, 0.186608076, 0)
-	unbreakdoors.Size = UDim2.new(0, 152, 0, 37)
+	unbreakdoors.Size = UDim2.new(0.899999976, 0, 0, 37)
 	unbreakdoors.Font = Enum.Font.SourceSans
 	unbreakdoors.Text = "Unbreak Doors"
 	unbreakdoors.TextColor3 = Color3.fromRGB(255, 255, 255)
