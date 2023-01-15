@@ -4,6 +4,7 @@ local Character = Player.Character or Player.CharacterAdded:Wait()
 local CoreGUI = game:GetService("CoreGui")
 
 local ESP_Enabled = false
+local InteractionTime = false
 
 function EnableDrag(f)
 	local dr = false
@@ -30,19 +31,22 @@ function EnableDrag(f)
 	end)
 end
 function InteractionHack(t)
-	task.defer(function()
-		while task.wait(2) do
-			for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
-				if (v.Name == "Time" or v.Name == "PickupTime") and (v:IsA("IntValue") or v:IsA("NumberValue")) then
-					v.Value = t>0 and t or 0.1
-				end
+	InteractionTime = t
+end
+task.defer(function()
+	while task.wait(1) do
+		if not InteractionTime then return end
+		for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
+			if (v.Name == "Time" or v.Name == "PickupTime") and (v:IsA("IntValue") or v:IsA("NumberValue")) then
+				v.Value = InteractionTime>1 and InteractionTime or 1
 			end
 		end
-	end)
-end
+	end
+end)
+
 function RemoveTheifRequirements()
 	task.defer(function()
-		while task.wait(2) do
+		while task.wait(1) do
 			for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
 				if v.Name == "ReqTheif" then
 					v:Destroy()
@@ -54,7 +58,7 @@ function RemoveTheifRequirements()
 end
 function RemoveEngineerRequirements()
 	task.defer(function()
-		while task.wait(2) do
+		while task.wait(1) do
 			for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
 				if v.Name == "ReqEngineer" then
 					v:Destroy()
@@ -65,7 +69,7 @@ function RemoveEngineerRequirements()
 end
 function RemoveHackerRequirements()
 	task.defer(function()
-		while task.wait(2) do
+		while task.wait(1) do
 			for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
 				if v.Name == "ReqHacker" then
 					v:Destroy()
@@ -76,10 +80,11 @@ function RemoveHackerRequirements()
 end
 function RemoveSuspiciousTriggers()
 	task.defer(function()
-		while task.wait(2) do
+		while task.wait(1) do
 			for _,obj in pairs(workspace:GetDescendants()) do
 				if obj.Name == "Suspicious" then
-					obj:Destroy()
+					obj.Value = false
+					--obj:Destroy()
 				end
 			end
 		end
