@@ -35,7 +35,7 @@ function InteractionHack(t)
 end
 task.defer(function()
 	while task.wait(1) do
-		if not InteractionTime then return end
+		if not InteractionTime then continue end -- forgor continue
 		for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
 			if (v.Name == "Time" or v.Name == "PickupTime") and (v:IsA("IntValue") or v:IsA("NumberValue")) then
 				v.Value = InteractionTime>1 and InteractionTime or 1
