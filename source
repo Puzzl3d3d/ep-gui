@@ -222,6 +222,8 @@ function CreateGUI()
 	sustriggers.TextScaled = true
 	sustriggers.TextSize = 14.000
 	sustriggers.TextWrapped = true
+	-- Added artificially
+	sustriggers.Visible = false
 
 	UIListLayout.Parent = ScrollingFrame
 	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
