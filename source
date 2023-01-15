@@ -33,8 +33,8 @@ function InteractionHack(t)
 	task.defer(function()
 		while task.wait(2) do
 			for _,v in pairs(workspace:WaitForChild("Level"):GetDescendants()) do
-				if v.Name == "Time" or v.Name == "PickupTime" and (v:IsA("IntValue") or v:IsA("NumberValue")) then
-					v.Value = t
+				if (v.Name == "Time" or v.Name == "PickupTime") and (v:IsA("IntValue") or v:IsA("NumberValue")) then
+					v.Value = t>0 and t or 0.1
 				end
 			end
 		end
