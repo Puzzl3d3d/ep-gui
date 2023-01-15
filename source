@@ -375,7 +375,7 @@ function CreateGUI()
 	end)
 	hiddenui.MouseButton1Click:Connect(BypassHiddenUI)
 	unbreakdoors.MouseButton1Click:Connect(UnbreakDoors)
-	sustriggers.MouseButton1Click:Connect(RemoveSuspiciousTriggers)
+	--sustriggers.MouseButton1Click:Connect(RemoveSuspiciousTriggers)
 	esp.MouseButton1Click:Connect(ToggleESP)
 end
 
