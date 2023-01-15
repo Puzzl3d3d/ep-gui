@@ -192,8 +192,7 @@ function CreateGUI()
 	ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ScrollingFrame.BackgroundTransparency = 0.950
 	ScrollingFrame.Position = UDim2.new(0, 0, 0.158652246, 0)
-	ScrollingFrame.Size = UDim2.new(0, 180, 0.841000021, 0)
-	ScrollingFrame.CanvasPosition = Vector2.new(0, 231.600677)
+	ScrollingFrame.Size = UDim2.new(1, 0, 0.841000021, 0)
 	ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 	esp.Name = "esp"
@@ -369,9 +368,9 @@ function CreateGUI()
 	hacker.MouseButton1Click:Connect(RemoveHackerRequirements)
 	engineer.MouseButton1Click:Connect(RemoveEngineerRequirements)
 	submit.MouseButton1Click:Connect(function()
-		local time = tonumber(box.Text)
-		if time then
-			InteractionHack(time)
+		local t = tonumber(box.Text)
+		if t then
+			InteractionHack(t)
 		end
 	end)
 	hiddenui.MouseButton1Click:Connect(BypassHiddenUI)
